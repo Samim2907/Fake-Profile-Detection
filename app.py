@@ -2,10 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-
+import os
+import gdown 
 # ── Load model artifacts ──────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
+    if not os.path.exists("model.pkl"):
+        url = "https://drive.google.com/file/d/1NIiyl8kkJIqQkCJGbW8QdI1PM1v_F0WI/view?usp=drive_link"
+        gdown.download(url, "model.pkl", quiet=False)
     model    = joblib.load("model.pkl")
     scaler   = joblib.load("scaler.pkl")
     features = joblib.load("features.pkl")
@@ -110,7 +114,7 @@ with tab1:
         X_input = engineer(followers, following, posts, bio_len, profile_pic, ff_ratio)
 
         with st.spinner("Analyzing profile..."):
-            import time; time.sleep(0.8)
+            import time; time.sleep(2.0)
             pred  = model.predict(X_input)[0]
             proba = model.predict_proba(X_input)[0]
 
