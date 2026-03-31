@@ -4,7 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.pipeline import make_pipeline
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import RandomizedSearchCV
+import xgboost as xgb
 
 df = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\complete_dataset.csv")
 
@@ -12,7 +13,6 @@ df = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\complete_dataset.csv")
 df["posts_per_follower"] = df["post_count"] / (df["followers_count"] + 1)
 df["posts_per_following"] = df["post_count"] / (df["following_count"] + 1)
 df["engagement_proxy"] = df["followers_count"] / (df["post_count"] + 1)
-
 
 df["low_followers_flag"] = (df["followers_count"] < 50).astype(int)
 df["high_following_flag"] = (df["following_count"] > 1000).astype(int)
@@ -38,13 +38,19 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-model = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=2, class_weight="balanced")
+model = xgb.XGBClassifier(
+    n_estimators=200,
+    max_depth=6,
+    learning_rate=0.2,
+    subsample=0.8,
+    colsample_bytree=0.5,
+    random_state=42
+)
 model.fit(X_train, y_train)
-
 
 pred = model.predict(X_test)
 
-print("Random Forest")
+print("XGBoost")
 print("Accuracy:", accuracy_score(y_test, pred))
 print(classification_report(y_test, pred))
 

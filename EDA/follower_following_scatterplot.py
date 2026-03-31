@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-df =  pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\cleaned_fake_profiles_dataset.csv")
+df =  pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\complete_dataset.csv")
 
 sns.scatterplot(
     x=np.log1p(df["following_count"]),

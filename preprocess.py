@@ -1,9 +1,5 @@
 import pandas as pd
 
-# ==============================
-# LOAD DATASETS
-# ==============================
-
 df1 = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\Datasets\facebook_profiles_7000.csv")
 df2 = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\Datasets\fake_social_media.csv")
 df3 = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\Datasets\Instagram.csv")
@@ -22,7 +18,7 @@ df1 = df1.rename(columns={
     "label": "label"
 })
 
-df1["post_count"] = 0  # dataset has no post info
+df1["post_count"] = 0  
 df1 = df1[[
     "followers_count",
     "following_count",
@@ -99,7 +95,6 @@ df4 = df4[[
     "label"
 ]]
 
-# convert profile_pic to numeric
 df4["profile_pic"] = df4["profile_pic"].replace({"True":1,"False":0})
 
 # ==============================
