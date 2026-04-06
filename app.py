@@ -7,9 +7,6 @@ import gdown
 # ── Load model artifacts ──────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    if not os.path.exists("model.pkl"):
-        url = "https://drive.google.com/file/d/1NIiyl8kkJIqQkCJGbW8QdI1PM1v_F0WI/view?usp=drive_link"
-        gdown.download(url, "model.pkl", quiet=False)
     model    = joblib.load("model.pkl")
     scaler   = joblib.load("scaler.pkl")
     features = joblib.load("features.pkl")
