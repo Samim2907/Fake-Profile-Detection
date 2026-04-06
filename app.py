@@ -61,10 +61,15 @@ div[data-testid="stButton"] button {
     border-radius: 8px !important;
     border: none !important;
 }
+div[data-testid="stSelectbox"] > div > div {
+    background: #131720 !important;
+    border: 1px solid #1e2535 !important;
+    color: #e8eaf0 !important;
+    border-radius: 8px !important;
+}
 </style>
 """, unsafe_allow_html=True)
 st.title("🔍 Fake Profile Detector")
-st.caption("Ekhane Ki likhbo?? :(")
 st.divider()
 
 # Sidebar
@@ -98,7 +103,7 @@ with tab1:
         following = st.number_input("Following Count", min_value=0, value=300)
     with col2:
         posts     = st.number_input("Post Count",      min_value=0, value=15)
-        profile_pic = st.selectbox("Has Profile Picture?", ["Yes", "No"]) == "Yes"
+        profile_pic = st.radio("Has Profile Picture?", ["Yes", "No"], horizontal=True) == "Yes"
     with col3:
         bio_text = st.text_area("Paste Bio (or leave blank)", height=80)
         bio_len  = len(bio_text.strip())
