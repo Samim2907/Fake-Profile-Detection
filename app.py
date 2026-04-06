@@ -99,8 +99,8 @@ with tab1:
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        followers = st.number_input("Followers Count", min_value=0, value=200)
-        following = st.number_input("Following Count", min_value=0, value=300)
+        followers = st.number_input("Followers Count", min_value=0, value=0)
+        following = st.number_input("Following Count", min_value=0, value=0)
     with col2:
         posts     = st.number_input("Post Count",      min_value=0, value=15)
         profile_pic = st.radio("Has Profile Picture?", ["Yes", "No"], horizontal=True) == "Yes"
