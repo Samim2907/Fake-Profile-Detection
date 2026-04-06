@@ -82,6 +82,7 @@ with st.sidebar:
     **Accuracy:** ~96.98%  
     **Dataset:** 32,138 profiles  
     **Features used:** 15  
+    **Made By:** Parth, Priyanshu, Tulika, Sweeti, Samim
     """)
     st.divider()
     st.markdown("**Features fed to model:**")
