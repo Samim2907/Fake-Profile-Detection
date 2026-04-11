@@ -68,10 +68,10 @@ print(f"Test  Accuracy : {accuracy_score(y_test,  preds):.4f}")
 print(f"Difference     : {accuracy_score(y_train, train_preds) - accuracy_score(y_test, preds):.4f}")
 print(classification_report(y_test, preds, target_names=["Real", "Fake"]))
 
-# cv_scores = cross_val_score(model, X_train_s, y_train, cv=5, scoring='accuracy')
-# print("CV Scores:  ", cv_scores)
-# print("CV Mean:    ", cv_scores.mean())
-# print("CV Std Dev: ", cv_scores.std())
+cv_scores = cross_val_score(model, X_train_s, y_train, cv=5, scoring='accuracy')
+print("CV Scores:  ", cv_scores)
+print("CV Mean:    ", cv_scores.mean())
+print("CV Std Dev: ", cv_scores.std())
 
 # Save ───────────────────────────────────────────────────────────────────
 joblib.dump(model,         rf"E:\Projects\ML\Fake Profile Detection\model.pkl")
