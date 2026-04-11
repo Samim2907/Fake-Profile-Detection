@@ -6,8 +6,9 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.ensemble import (RandomForestClassifier, ExtraTreesClassifier, GradientBoostingClassifier, StackingClassifier)
 from sklearn.linear_model import LogisticRegression
 import joblib
+from sklearn.model_selection import cross_val_score
 
-df = pd.read_csv(r"E:\Projects\ML\Fake Profile Detection\complete_dataset.csv")
+df = pd.read_csv(rf"E:\Projects\ML\Fake Profile Detection\cleaned_fake_profiles_dataset.csv")
 
 df['profile_pic'] = df['profile_pic'].map(
     {'1': 1, '0': 0, 'True': 1, 'False': 0}
@@ -62,4 +63,8 @@ joblib.dump(X.columns.tolist(),r"E:\Projects\ML\Fake Profile Detection\features.
 
 print("Model saved!")
 
+cv_scores = cross_val_score(model, X_train_s, y_train, cv=5, scoring='accuracy')
+print("CV Scores:  ", cv_scores)
+print("CV Mean:    ", cv_scores.mean())
+print("CV Std Dev: ", cv_scores.std())
 # Accuracy: 0.9698195395146235
