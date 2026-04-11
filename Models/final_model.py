@@ -14,7 +14,7 @@ df = pd.read_csv(rf"E:\Projects\ML\Fake Profile Detection\cleaned_fake_profiles_
 print(f"Merged dataset: {df.shape[0]} rows, {df.shape[1]} columns")
 print("Label distribution:", df["label"].value_counts().to_dict())
 
-# ── 4. Feature engineering ────────────────────────────────────────────────────
+# Feature engineering ────────────────────────────────────────────────────
 df["posts_per_follower"]    = df["post_count"] / (df["followers_count"] + 1)
 df["posts_per_following"]   = df["post_count"] / (df["following_count"] + 1)
 df["engagement_proxy"]      = df["followers_count"] / (df["post_count"] + 1)
