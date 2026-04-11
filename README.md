@@ -71,7 +71,7 @@ pip install -r requirements.txt
 ### 3. Train and save the model
 Place the 4 CSV files in the project folder, then run:
 ```bash
-python train_and_save.py
+python final_model.py
 ```
 This generates `model.pkl`, `scaler.pkl`, and `features.pkl`.
 
